@@ -16,6 +16,18 @@ interface tb_ifc (input logic clk);
   address_t      write_pointer, read_pointer;
   instruction_t  instruction_word;
 
+  clocking cb @(posedge clk);
+    default input #25ns output #10ns;
+    output instruction_word;
+    input load_en,reset_n, opcode, operand_a, operand_b, write_pointer, read_pointer;
+  endclocking  
+
+  modport TB (
+    clocking cb
+  );
+
+
+
 
 endinterface: tb_ifc
 
