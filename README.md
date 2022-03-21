@@ -1,3 +1,3 @@
 # TSC
 # Salut!
-# Laborator 1 TSC!
+ Laborator 1 TSC!
