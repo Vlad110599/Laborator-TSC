@@ -19,6 +19,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  output instruction_t  instruction_word
 );
   //timeunit 1ns/1ns;
+  // de adaugat un semanal de result si in dut , in functe de opcode, sa faca operatia corespunzatoare. Switch case.
 
   instruction_t  iw_reg [0:31];  // an array of instruction_word structures
 

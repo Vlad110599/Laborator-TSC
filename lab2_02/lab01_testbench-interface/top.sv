@@ -19,7 +19,7 @@ module top();
   // operand_t      operand_a, operand_b;
   // address_t      write_pointer, read_pointer;
   // instruction_t  instruction_word;
-  tb_ifc interfata_lab1(.clk(test_clk));
+  tb_ifc interfata_lab1(.clk(clk));
 
   // instantiate testbench and connect ports
   instr_register_test test (.interfata_lab1(interfata_lab1));
