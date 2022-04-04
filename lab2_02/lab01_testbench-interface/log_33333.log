@@ -1,0 +1,142 @@
+# 
+# ***********************************************************
+# ***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***
+# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
+# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
+# ***********************************************************
+# ***  FIRST HEADER *****************************************
+# 
+# Reseting the instruction register...
+# 
+# Writing values to register stack...
+# Writing to register location 0: 
+#   opcode = 2 (PASSB)
+#   operand_a = 0
+#   operand_b = 8
+# 
+#  Print transaction, time: 20 ns 
+# Writing to register location 1: 
+#   opcode = 7 (MOD)
+#   operand_a = 10
+#   operand_b = 4
+# 
+#  Print transaction, time: 30 ns 
+# Writing to register location 2: 
+#   opcode = 3 (ADD)
+#   operand_a = 11
+#   operand_b = 11
+# 
+#  Print transaction, time: 40 ns 
+# Writing to register location 3: 
+#   opcode = 7 (MOD)
+#   operand_a = 2
+#   operand_b = 14
+# 
+#  Print transaction, time: 50 ns 
+# Writing to register location 4: 
+#   opcode = 7 (MOD)
+#   operand_a = 11
+#   operand_b = 7
+# 
+#  Print transaction, time: 60 ns 
+# Writing to register location 5: 
+#   opcode = 6 (DIV)
+#   operand_a = 13
+#   operand_b = 6
+# 
+#  Print transaction, time: 70 ns 
+# Writing to register location 6: 
+#   opcode = 3 (ADD)
+#   operand_a = 14
+#   operand_b = 1
+# 
+#  Print transaction, time: 80 ns 
+# Writing to register location 7: 
+#   opcode = 1 (PASSA)
+#   operand_a = 12
+#   operand_b = 1
+# 
+#  Print transaction, time: 90 ns 
+# Writing to register location 8: 
+#   opcode = 6 (DIV)
+#   operand_a = 5
+#   operand_b = 8
+# 
+#  Print transaction, time: 100 ns 
+# Writing to register location 9: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 7
+# 
+#  Print transaction, time: 110 ns 
+# 
+# Reading back the same register locations written...
+# Read from register location 0: 
+#   opcode = 2 (PASSB)
+#   operand_a = 0
+#   operand_b = 8
+#   result = 0
+# 
+# Read from register location 1: 
+#   opcode = 7 (MOD)
+#   operand_a = 10
+#   operand_b = 4
+#   result = 2
+# 
+# Read from register location 2: 
+#   opcode = 3 (ADD)
+#   operand_a = 11
+#   operand_b = 11
+#   result = 22
+# 
+# Read from register location 3: 
+#   opcode = 7 (MOD)
+#   operand_a = 2
+#   operand_b = 14
+#   result = 2
+# 
+# Read from register location 4: 
+#   opcode = 7 (MOD)
+#   operand_a = 11
+#   operand_b = 7
+#   result = 4
+# 
+# Read from register location 5: 
+#   opcode = 6 (DIV)
+#   operand_a = 13
+#   operand_b = 6
+#   result = 2
+# 
+# Read from register location 6: 
+#   opcode = 3 (ADD)
+#   operand_a = 14
+#   operand_b = 1
+#   result = 15
+# 
+# Read from register location 7: 
+#   opcode = 1 (PASSA)
+#   operand_a = 12
+#   operand_b = 1
+#   result = 0
+# 
+# Read from register location 8: 
+#   opcode = 6 (DIV)
+#   operand_a = 5
+#   operand_b = 8
+#   result = 0
+# 
+# Read from register location 9: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 7
+#   result = 0
+# 
+# 
+# ***********************************************************
+# ***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***
+# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
+# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
+# ***********************************************************
+# 
+# ** Note: $finish    : ../lab01_testbench-interface/instr_register_test.sv(58)
+#    Time: 220 ns  Iteration: 2  Instance: /top/test

@@ -4,7 +4,9 @@
 #---------------------------------------------------------------------------------------
 
 # Set transcript file name
-## transcript file ../reports/regression_transcript/transcript_$1
+transcript file ../reports/regression_transcript/transcript_$1
+
+#echo $1
 
 # Check if the sources must be re-compiled
 if {[file isdirectory work]} {
@@ -20,7 +22,7 @@ if {$compile_on || [batch_mode] == 0} {
 }
 
 # Load project
-  eval vsim -novopt -quiet -nocoverage +notimingchecks +nowarnTSCALE -sva top
+  eval vsim -novopt -quiet -nocoverage +notimingchecks +nowarnTSCALE -sv_seed $1 -sva top
 # eval vsim -novopt -quiet -coverage -notogglevlogints +notimingchecks +nowarnTSCALE +TESTNAME=$1 -sva top
 
 # Run log/wave commands
