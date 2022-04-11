@@ -9,10 +9,26 @@ import instr_register_pkg::*;
 class First_test;
     virtual tb_ifc.TB interfata_lab1;
     //int seed;
+    parameter gen_nr_operation = 100;
     function new(virtual tb_ifc.TB interfata);
       interfata_lab1 = interfata;
      // seed = 555;
     endfunction : new 
+
+    covergroup my_coverGroup();
+      coverpoint interfata_lab1.cb.operand_a {
+        bins op_a_neg_values = {[-15:-1]};
+        bins op_a_zero = {0};
+        bins op_a_pos_values = {[1:15]};
+      }
+      coverpoint interfata_lab1.cb.operand_b {
+        bins op_b_values = {[0:15]};
+      }
+      coverpoint interfata_lab1.cb.opcode {
+        bins opcode_values = {[0:7]};
+      }
+      //Tema: de scris coverpoint pentru rezultat
+    endgroup  
 
     task run ();
     $display("\n\n***********************************************************");
@@ -33,20 +49,22 @@ class First_test;
 
     $display("\nWriting values to register stack...");
     @(posedge interfata_lab1.cb) interfata_lab1.cb.load_en <= 1'b1;  // enable writing to register
-    repeat (10) begin
+    repeat (gen_nr_operation) begin
       @(posedge interfata_lab1.cb) randomize_transaction; //o functie are timp de simulare zero.
       @(negedge interfata_lab1.cb) print_transaction;
+      my_coverGroup.sample();
     end
     @(posedge interfata_lab1.cb) interfata_lab1.cb.load_en <= 1'b0;  // turn-off writing to register
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
-    for (int i=0; i<=9; i++) begin
+    for (int i=0; i<=(gen_nr_operation - 1); i++) begin
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
       @(posedge interfata_lab1.cb) interfata_lab1.cb.read_pointer <= i;
       @(negedge interfata_lab1.cb) print_results;
+      my_coverGroup.sample();
     end
 
     @(posedge interfata_lab1.cb) ;
@@ -66,6 +84,8 @@ class First_test;
     // The stactic temp variable is required in order to write to fixed
     // addresses of 0, 1 and 2.  This will be replaceed with randomizeed
     // write_pointer values in a later lab
+
+    //Random e stabila pe thread, urandom e stabila pe clasa.
     //
     static int temp = 0;
     // interfata_lab1.cb.operand_a     <= $random(seed)%16;                 // between -15 and 15
