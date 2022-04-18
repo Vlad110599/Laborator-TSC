@@ -22,8 +22,8 @@ if {$compile_on || [batch_mode] == 0} {
 }
 
 # Load project
-  eval vsim -novopt -quiet -nocoverage +notimingchecks +nowarnTSCALE -sv_seed $1 -sva top
-# eval vsim -novopt -quiet -coverage -notogglevlogints +notimingchecks +nowarnTSCALE +TESTNAME=$1 -sva top
+  #eval vsim -novopt -quiet -nocoverage +notimingchecks +nowarnTSCALE -sv_seed $1 -sva top
+  eval vsim -novopt -quiet -coverage -notogglevlogints +notimingchecks +nowarnTSCALE +TESTNAME=$1 -sva top
 
 # Run log/wave commands
 # Batch_mode = 0 [GUI_mode]; Batch_mode = 1 [regress_mode]
@@ -34,7 +34,7 @@ if {[batch_mode] == 0} {
 
 # On brake:
 onbreak {
-  # save coverage report file (when loading project with coverage)
+  #save coverage report file (when loading project with coverage)
     #eval coverage save "../reports/regression_coverage/coverage_$1.ucdb"
     
   # if [regress_mode]: continue script excution

@@ -9,26 +9,34 @@ import instr_register_pkg::*;
 class First_test;
     virtual tb_ifc.TB interfata_lab1;
     //int seed;
-    parameter gen_nr_operation = 100;
-    function new(virtual tb_ifc.TB interfata);
-      interfata_lab1 = interfata;
-     // seed = 555;
-    endfunction : new 
+    parameter gen_nr_operation = 100000;
 
-    covergroup my_coverGroup();
-      coverpoint interfata_lab1.cb.operand_a {
-        bins op_a_neg_values = {[-15:-1]};
+    covergroup my_coverGroup;
+      OP_A_COVER: coverpoint interfata_lab1.cb.operand_a {
+        bins op_a_neg_values[] = {[-15:-1]};
         bins op_a_zero = {0};
-        bins op_a_pos_values = {[1:15]};
+        bins op_a_pos_values[] = {[1:15]};
       }
-      coverpoint interfata_lab1.cb.operand_b {
-        bins op_b_values = {[0:15]};
+      OP_B_COVER: coverpoint interfata_lab1.cb.operand_b {
+        bins op_b_zero = {0};
+        bins op_b_values[] = {[1:15]};
       }
-      coverpoint interfata_lab1.cb.opcode {
-        bins opcode_values = {[0:7]};
+      OPCODE_COVER: coverpoint interfata_lab1.cb.opcode {
+        bins opcode_values[] = {[0:7]};
+      }
+      RESULT_COVER: coverpoint interfata_lab1.cb.instruction_word.res {
+        bins result_neg_values[] = {[-225:-1]};
+        bins result_zero = {0};
+        bins result_pos_values[] = {[1:225]};
       }
       //Tema: de scris coverpoint pentru rezultat
     endgroup  
+
+    function new(virtual tb_ifc.TB interfata);
+      interfata_lab1 = interfata;
+      my_coverGroup = new();
+     // seed = 555;
+    endfunction : new 
 
     task run ();
     $display("\n\n***********************************************************");
@@ -91,7 +99,7 @@ class First_test;
     // interfata_lab1.cb.operand_a     <= $random(seed)%16;                 // between -15 and 15
     // interfata_lab1.cb.operand_b     <= $unsigned($random)%16;            // between 0 and 15
     // interfata_lab1.cb.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
-    interfata_lab1.cb.operand_a     <= $urandom()%16;                 // between -15 and 15
+    interfata_lab1.cb.operand_a     <= $signed($urandom())%16;                 // between -15 and 15
     interfata_lab1.cb.operand_b     <= $unsigned($urandom)%16;            // between 0 and 15
     interfata_lab1.cb.opcode        <= opcode_t'($unsigned($urandom)%8);  // between 0 and 7, cast to opcode_t type
     interfata_lab1.cb.write_pointer <= temp++;
