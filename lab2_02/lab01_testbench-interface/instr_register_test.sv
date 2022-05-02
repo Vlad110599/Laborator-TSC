@@ -9,7 +9,7 @@ import instr_register_pkg::*;
 class First_test;
     virtual tb_ifc.TB interfata_lab1;
     //int seed;
-    parameter gen_nr_operation = 100000;
+    parameter gen_nr_operation = 5;
 
     covergroup my_coverGroup;
       OP_A_COVER: coverpoint interfata_lab1.cb.operand_a {
